@@ -5,15 +5,21 @@
   "main": "server.js",
   "repository": "github:GeeTransit/nodejs_chatapp",
   "scripts": {
-    "test": "echo \"Error: no test specified\" & exit 1",
-    "start": "set DEBUG=chatapp & node server.js"
+    "test": "cross-env echo \"Error: no test specified\" && exit 1",
+    "debug": "cross-env DEBUG=* nodemon server.js",
+    "dev": "cross-env DEBUG=chatapp nodemon server.js",
+    "start": "cross-env DEBUG=chatapp node server.js"
   },
   "author": "George Zhang",
   "license": "MIT",
   "dependencies": {
+    "cross-env": "^7.0.2",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "rotating-file-stream": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
