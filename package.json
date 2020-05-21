@@ -5,12 +5,15 @@
   "main": "server.js",
   "repository": "github:GeeTransit/nodejs_chatapp",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" & exit 1",
+    "start": "set DEBUG=chatapp & node server.js"
   },
   "author": "George Zhang",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "rotating-file-stream": "^2.1.1"
   }
 }
