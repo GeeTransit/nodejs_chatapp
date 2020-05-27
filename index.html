@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>g-chatapp</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <script>
+      $(_ => {
+        const socket = io()
+        $("#new").submit(e => {
+          e.preventDefault()  // prevents page reloading
+          socket.emit("chat-message", $("#send").val())
+          $("#send").val("")
+          return false
+        });
+        socket.on("chat-message", message => {
+          $("#messages").append($("<li>").text(message))
+        })
+      })
+    </script>
+    <ul id="messages"></ul>
+    <form id="new" action="">
+      <input id="send" autocomplete="off" />
+      <button>Send</button>
+    </form>
+  </body>
+</html>
